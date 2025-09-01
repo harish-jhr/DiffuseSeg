@@ -22,21 +22,6 @@ MLP_TRAINING_CONFIG = {
     'learning_rate': 0.0001,
 }
 
-
-LOG_FILE = os.path.join(OUTPUT_DIR, "training_log.txt")
-class Logger(object):
-    def __init__(self, filename):
-        self.terminal = sys.stdout
-        self.log = open(filename, "a", buffering=1)
-    def write(self, message):
-        self.terminal.write(message)
-        self.log.write(message)
-    def flush(self):
-        self.terminal.flush()
-        self.log.flush()
-sys.stdout = Logger(LOG_FILE)
-
-
 class PixelMLP(nn.Module):
     def __init__(self, input_dim: int, num_classes: int):
         super().__init__()
