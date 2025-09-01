@@ -196,7 +196,6 @@ if __name__ == "__main__":
         if gt_mask_tensor is not None:
             mIoU, _ = calculate_iou(predicted_mask_ids, gt_mask_tensor, NUM_CLASSES)
             print(f"\nMean IoU (mIoU) on test image: {mIoU:.4f}")
-            # --- Visualization ---
             fig, axes = plt.subplots(1, 2 + (1 if gt_mask_tensor is not None else 0), figsize=(15, 6))
             
             # Original Image

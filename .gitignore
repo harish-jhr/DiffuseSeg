@@ -1,8 +1,10 @@
 *
 !/utils/
 !/results/
+!/val_set/
 
 !/utils/**
 !/results/**
 !/val_set/**
+
 !.gitignore

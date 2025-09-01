@@ -9,7 +9,6 @@ import numpy as np
 import sys
 import wandb
 
-# --- Configurations ---
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 NUM_CLASSES = 20
 OUTPUT_DIR = "/dir/DiffuseSeg/extracted_ddpm_features/"
@@ -23,7 +22,7 @@ MLP_TRAINING_CONFIG = {
     'learning_rate': 0.0001,
 }
 
-# --- Logging setup ---
+
 LOG_FILE = os.path.join(OUTPUT_DIR, "training_log.txt")
 class Logger(object):
     def __init__(self, filename):
@@ -37,7 +36,7 @@ class Logger(object):
         self.log.flush()
 sys.stdout = Logger(LOG_FILE)
 
-# --- MLP Architecture ---
+
 class PixelMLP(nn.Module):
     def __init__(self, input_dim: int, num_classes: int):
         super().__init__()
@@ -57,7 +56,7 @@ class PixelMLP(nn.Module):
         x = self.fc_out(x)
         return x
 
-# --- Evaluation Function ---
+
 def calculate_iou(predictions: torch.Tensor, targets: torch.Tensor, num_classes: int):
     iou_per_class = []
     predictions = predictions.cpu()
@@ -77,7 +76,6 @@ def calculate_iou(predictions: torch.Tensor, targets: torch.Tensor, num_classes:
         return 0.0, iou_per_class
     return sum(valid_iou) / len(valid_iou), iou_per_class
 
-# --- Training Function ---
 def train_mlp_ensemble(features: torch.Tensor, labels: torch.Tensor, mlp_config: dict, train_config: dict):
     X_train, X_val, y_train, y_val = train_test_split(
         features, labels, test_size=0.2, random_state=42, stratify=labels.cpu().numpy()
@@ -146,11 +144,9 @@ def train_mlp_ensemble(features: torch.Tensor, labels: torch.Tensor, mlp_config:
 
     return trained_mlps, mlp_val_scores
 
-# --- Main Block ---
 if __name__ == "__main__":
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-    # wandb init (set your project/run name here)
     wandb.init(project="DiffuseSeg-MLP-Logs", name="train-1")
 
     print("Loading features and labels...")
