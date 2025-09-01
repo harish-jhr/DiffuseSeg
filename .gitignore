@@ -2,9 +2,12 @@
 !/utils/
 !/results/
 !/val_set/
+!/display_imgs/
 
 !/utils/**
 !/results/**
 !/val_set/**
+!/display_imgs/**
 
 !.gitignore
+!requirements.txt

@@ -13,14 +13,14 @@ import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 from collections import Counter
 from huggingface_hub import hf_hub_download
-sys.path.append('/ssd_scratch/harish.j/DiffuseSeg/utils/')
+sys.path.append('/dir/DiffuseSeg/utils/')
 from UNet import Unet
 from noise_scheduler import NoiseScheduler
 from Feature_extractor import FeatureCaptureUnet
 from train_MLPs import PixelMLP, calculate_iou
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-config_path = "/ssd_scratch/harish.j/DiffuseSeg/utils/config.yaml"
+config_path = "/dir/DiffuseSeg/utils/config.yaml"
 PART_COLORS = {
     "skin": (204, 204, 255), "l_brow": (255, 0, 0), "r_brow": (255, 0, 85),
     "l_eye": (255, 0, 170), "r_eye": (255, 0, 255), "eye_g": (170, 0, 255),
@@ -162,7 +162,7 @@ if __name__ == "__main__":
     )
     fig, axes = plt.subplots(1, 2, figsize=(10,5))
     axes[0].imshow(ddpm_sample_img)
-    axes[0].set_title("Original")
+    axes[0].set_title("Sampled using DDPM")
     axes[0].axis("off")
 
     axes[1].imshow(mask_rgb)
