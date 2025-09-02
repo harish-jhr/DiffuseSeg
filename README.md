@@ -2,6 +2,8 @@
 
 DiffuseSeg demonstrates how a single, unconditionally trained Denoising Diffusion Probabilistic Model (DDPM) can serve as a powerful backbone for both high fidelity synthetic image generation and label-efficient semantic segmentation.
 
+![A summary of DiffuseSeg](display_imgs/summary.png)
+
 The core idea is to repurpose the rich, multi-scale features learned by the U-Net decoder of a DDPM. By extracting these features, we can train a lightweight, pixel level segmentation head with very few labeled examples, effectively turning the generative model into a labeled data factory.
 
 This project was inspired by the following [paper](https://arxiv.org/abs/2112.03126).
@@ -19,7 +21,7 @@ The project is implemented in two main stages:
 - One can use the scripts from here to train on any dataset with minor dataset specific modifications.
 - You can also use a pre-trained model and directly move to stage2.
 
-![A summary of DiffuseSeg](display_imgs/summary.png)
+![A summary of DiffuseSeg](display_imgs/grid_gif.gif)
 
 #### Stage 2: Train a Segmentation Head
 With the DDPM U-Net frozen, we use it as a feature extractor.
