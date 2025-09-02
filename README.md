@@ -21,7 +21,9 @@ The project is implemented in two main stages:
 - One can use the scripts from here to train on any dataset with minor dataset specific modifications.
 - You can also use a pre-trained model and directly move to stage2.
 
-![A summary of DiffuseSeg](display_imgs/grid_gif.gif)
+<p align="center">
+  <img src="display_imgs/grid_gif.gif">
+</p>
 
 #### Stage 2: Train a Segmentation Head
 With the DDPM U-Net frozen, we use it as a feature extractor.
