@@ -125,7 +125,7 @@ def run_inference_on_img(
 #Main bloc
 if __name__ == "__main__":
     
-    DEVICE_ID = 2
+    DEVICE_ID = 0
     device = f'cuda:{DEVICE_ID}' if torch.cuda.is_available() else 'cpu'
     print(f"Using device: {device}")
     
